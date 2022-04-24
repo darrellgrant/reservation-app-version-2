@@ -1,0 +1,58 @@
+body {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul li a {
+  text-decoration: none;
+}
+
+ul li a.active {
+  background: black;
+  color: white;
+}
+
+.main-image {
+  background-image: url("../images/index-pg-img.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center center;
+  overflow: auto;
+  height: 100vh;
+}
+
+.reserve-image {
+  background-image: url("../images/reserve-pg-img.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center center;
+  overflow: auto;
+  height: 100vh;
+}
+.review-image {
+  background-image: url("../images/review-pg-img.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center center;
+  overflow: auto;
+  height: 100vh;
+}
+
+.cancel-image {
+  background-image: url("../images/cancel-pg-img.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center center;
+  overflow: auto;
+  height: 100vh;
+}
