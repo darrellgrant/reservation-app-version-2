@@ -1,4 +1,4 @@
-const currentLocation = location.href;
+const currentLocation = location.href; //returns the href (URL) of the current page
 const menuItem = document.querySelectorAll("a");
 const menuLength = menuItem.length;
 for (let i = 0; i < menuLength; i++) {
