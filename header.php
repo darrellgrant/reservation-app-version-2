@@ -22,7 +22,7 @@ session_start();
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"
     />
     <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/form.css">
+    
      <script src="js/main.js" defer></script>
     
     <title>Welcome to Rick's Cafe</title>

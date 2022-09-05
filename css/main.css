@@ -56,3 +56,27 @@ ul li a.active {
   overflow: auto;
   height: 100vh;
 }
+
+.form-style {
+  display: block;
+  margin: 0 auto;
+  border-radius: 20px;
+  padding: 30px;
+  width: 40%;
+  background-color: aliceblue;
+}
+
+.form-style > #tab-two,
+#tab-three,
+#tab-four,
+#prev-btn {
+  display: none;
+}
+
+.custom-margin {
+  margin-top: 30px;
+}
+
+.error-text {
+  color: crimson;
+}

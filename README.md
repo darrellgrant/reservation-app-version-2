@@ -1,5 +1,5 @@
 # Restaurant Reservation APP version 2
-Updating my previous reservation app from 2021. This application application allows guests to make, view, update and/or cancel dining reservations for a fictional restauraunt "Rick's Cafe"
+Updating my previous reservation app from 2021. This application allows guests to make, view, update and/or cancel dining reservations for a fictional restauraunt "Rick's Cafe"
 
 The app has four main features
 
