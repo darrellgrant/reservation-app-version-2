@@ -20,6 +20,7 @@ class ReservationForm {
   constructor() {
     this.form = _("reservation-form");
     this.nextBtn = _("next-btn");
+    this.prevBtn = _("prev-btn");
     this.firstNameInput = _("formInput_FirstName");
     this.lastNameInput = _("formInput_LastName");
     this.phoneNumberInput = _("formInput_Phone");
@@ -33,12 +34,18 @@ class ReservationForm {
         !Validator.validate(
           this.firstNameInput.value.trim(),
           Validator.nameTest
-        )
+        ) &&
+        this.firstNameInput.value != ""
       ) {
-        _("error-message-fname").innerHTML =
+        Error.errorHandler(
+          this.firstNameInput,
+          "error-message-fname",
+          Error.nameError
+        );
+        /* _("error-message-fname").innerHTML =
           "Please enter only letters, no numbers or spaces";
         this.firstNameInput.onkeyup = () =>
-          (_("error-message-fname").innerHTML = "");
+          (_("error-message-fname").innerHTML = ""); */
       }
     });
   }
@@ -48,6 +55,24 @@ class ReservationForm {
     _(selector2).style.display = "block";
     _("prev-btn").style.display = "inline";
     currentTab++;
+  }
+  goBack(selector1, selector2) {
+    _(selector1).style.display = "none";
+    _(selector2).style.display = "block";
+    if (currentTab === 0) {
+      _("prev-btn").style.display = "none";
+    }
+    currentTab--;
+  }
+
+  navigate(num) {
+    const tabs = document.getElementsByClassName("tab");
+    //validate
+    tabs[currentTab].style.display = "none";
+    currentTab = currentTab + num;
+    if (currentTab >= tabs.length) {
+      //submit....
+    }
   }
 
   checkEmptyInput() {
@@ -97,7 +122,7 @@ class ReservationForm {
 }
 
 class Validator {
-  static nameTest = /^[a-zA-Z]+$/;
+  static nameTest = /^[a-zA-Z\s]+$/;
   static phoneTest = /^(\d{3}-\d{3}-\d{4})*$/;
   static dateTest =
     /^((0?[1-9]|1[012])[- /.](0?[1-9]|[12][0-9]|3[01])[- /.](19|20)?[0-9]{2})*$/;
@@ -105,6 +130,15 @@ class Validator {
   static guestNumTest = /(^0?[1-9]$)|(^1[0-2]$)/;
   static validate(userInput, inputTest) {
     return inputTest.test(userInput);
+  }
+}
+
+class Error {
+  static nameError = "Please enter only letters, no numbers or spaces";
+  static numberError = "Please enter phone number in format: 123-456-7890";
+  static errorHandler(formInput, selector, errorMessage) {
+    _(selector).innerHTML = errorMessage;
+    formInput.onkeyup = () => (_(selector).innerHTML = "");
   }
 }
 
