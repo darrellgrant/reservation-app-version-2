@@ -22,16 +22,16 @@ session_start();
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"
     />
     <link rel="stylesheet" href="css/main.css">
-    
-     <script src="js/main.js" defer></script>
-    
+
+     <script src="js/main_2.js" defer></script>
+
     <title>Welcome to Rick's Cafe</title>
   </head>
   <body>
-    
-      <nav > 
+
+      <nav >
         <div class="container">
-          <ul class="nav justify-content-end"> 
+          <ul class="nav justify-content-end">
               <li><a class="nav-link" href="index.php">Home</a></li>
               <li><a class="nav-link" href="reserve.php">Reserve a Table</a></li>
               <li><a class="nav-link" href="review.php">Change Reservation</a></li>
@@ -39,5 +39,3 @@ session_start();
           </ul>
         </div><!--end container-->
       </nav>
-
-    

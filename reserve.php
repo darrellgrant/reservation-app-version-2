@@ -18,10 +18,12 @@ include_once "header.php";
                     <div class="mb-3">
                         <label for="formInput_LastName" class="form-label">Last Name</label>
                         <input type="text" class="form-control" id="formInput_LastName" placeholder="Last Name">
+                        <div class="error-text" id="error-message-lname"></div>
                     </div>
                     <div class="mb-3">
                         <label for="formInput_Phone" class="form-label">Phone Number</label>
                         <input type="text" class="form-control" id="formInput_Phone" placeholder="Phone Number Ex: 123-123-1234">
+                        <div class="error-text" id="error-message-phone"></div>
                     </div>
                     <!--END TAB ONE-->
                 </div>
