@@ -23,6 +23,7 @@ const error_flag = 1;
 class ReservationForm {
   constructor() {
     //this.form = _("reservation-form");
+    this.currentTab = 0;
     this.nextBtn = _("next-btn");
     this.prevBtn = _("prev-btn");
     this.firstNameInput = _("formInput_FirstName");
@@ -69,6 +70,10 @@ class ReservationForm {
     ) {
       Error.errorHandler(target, error_string, errorMessage);
     }
+  }
+
+  checkValidInputs() {
+    const formInputGroup = document.getElementsByTagName("input");
   }
 
   advance(selector1, selector2) {
