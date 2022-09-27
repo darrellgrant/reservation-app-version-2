@@ -22,7 +22,7 @@ const error_flag = 1;
 
 class ReservationForm {
   constructor() {
-    //this.form = _("reservation-form");
+    this.form = _("reservation-form");
     this.currentTab = 0;
     this.nextBtn = _("next-btn");
     this.prevBtn = _("prev-btn");
@@ -70,6 +70,33 @@ class ReservationForm {
     ) {
       Error.errorHandler(target, error_string, errorMessage);
     }
+  }
+
+  showTab(tabIndex) {
+    const tabList = document.getElementsByClassName("tab");
+    tabList[tabIndex].style.display = "block";
+    if (tabIndex === 0) {
+      this.prevBtn.style.display = "none";
+    } else {
+      this.prevBtn.style.display = "inline";
+    }
+    if (tabIndex == tabList.length - 1) {
+      this.nextBtn.innerHTML = "Submit";
+    } else {
+      this.nextBtn.innerHTML = "Next";
+    }
+  }
+
+  nexPrev(e, n) {
+    const tabList = document.getElementsByClassName("tab");
+    if (n == 1 && !validateForm()) return false;
+    tabList[currentTab].style.display = "none";
+    currentTab = currentTab + n;
+    if (currentTab >= tabList + n) {
+      this.nextBtn.setAttribute("type", "submit");
+      this.form.submit();
+    }
+    this.showTab(currentTab);
   }
 
   checkValidInputs() {

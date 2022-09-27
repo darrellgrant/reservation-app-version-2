@@ -10,7 +10,7 @@ include_once "header.php";
 
             <!--FORM-->
             <form class="form-style mb-3 custom-margin" id="reservation-form">
-                <div >
+                <div class="tab">
                     <div class="mb-3">
                         <label for="formInput_FirstName" class="form-label">First Name</label>
                         <input type="text" class="form-control" id="formInput_FirstName" placeholder="First Name">
@@ -28,7 +28,7 @@ include_once "header.php";
                     </div>
                     <!--END TAB ONE-->
                 </div>
-                <div >
+                <div class="tab">
                     <div class="mb-3">
                         <label for="formInput_Date" class="form-label">Date</label>
                         <input type="text" class="form-control" id="formInput_Date" placeholder="Date">
@@ -44,7 +44,7 @@ include_once "header.php";
 
                 </div>
                 <!--END TAB TWO-->
-                <div >
+                <div class="tab">
 
                     <div>Do You or a Guest Need Special Accomodations?</div>
                     <div class="mb-3 form-check">
@@ -63,7 +63,7 @@ include_once "header.php";
                     </div>
                 </div>
                 <!--END TAB THREE-->
-                <div >
+                <div class="tab">
                     <div>Seating Preference</div>
                     <div class="mb-3 form-check">
                         <input class="form-check-input" type="radio" name="seating-check" id="smoking" checked>
