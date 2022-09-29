@@ -16,10 +16,10 @@ The checkUserInput() method is called by event listeners on each of the form's
 text inputs. The method is triggered by the 'change' event (i.e., when the user
 types something in the form and the element loses focus).
 
-The checkUserInput() method first calls the **Validator.validate()** method. If
-that method returns false, the **Error.errorHandler()** method is called.
+checkUserInput() first calls the **Validator.validate()** method. If that method
+returns false, the **Error.errorHandler()** method is called.
 
-The checkUserInput() method takes four parameters:
+checkUserInput() takes four parameters:
 
 1. **target** represents the particular form input, (i.e. First Name) that is
    currently being checked for validity.
@@ -31,31 +31,42 @@ The checkUserInput() method takes four parameters:
 2. **targetTest** reperesents the appropriate test which the user supplied data
    will be subjected to (i.e. a 'name test' to ensure a name input is correcly
    filled).
-   - This is also passed to the Validator.validate() method as its second
-     parameter.
+   - This is also passed to Validator.validate() as its second parameter.
 3. **error_string** represents the DOM element which will display the
    appropriate error message.
-   - This variable is passed to the **Error.errorHandler()** method as its
-     second parameter.
+   - This variable is passed to **Error.errorHandler()** as its second
+     parameter.
 4. **errorMessage** represents the individualized error message that will be
    displayed below the input.
-   - This variable is passed to the **Error.errorHandler()** method as its third
-     and final parameter.
+   - This variable is passed to **Error.errorHandler()** as its third and final
+     parameter.
 
-Example: The user types a series of numbers in the 'First Name' text input area.
-When the input element loses focus (typically when the user clicks or types
-elsewhere), the checkUserInput() method is triggered. The checkUserInput()
-method will take as arguments 1. the **firstNameInput** (target), 2.
-**Validator.nameTest** (targetTest), 3. the string **"error-message-fname"**
-(error_string), and 4. **Error.nameError**(errorMessage).
+**Example:** The user types a series of numbers in the 'First Name' text input
+area. When the input element loses focus (typically when the user clicks or
+types elsewhere), the checkUserInput() method is triggered. checkUserInput()
+takes as its arguments:
 
-The checkUserInput() method will then call the Validator.validate() method which
-tests the user supplied data against a regular expression. As the user has typed
-in a series of numbers and the 'nameTest' is a test for letters, the
+1.  **firstNameInput** (target)
+2.  **Validator.nameTest** (targetTest)
+3.  the string **"error-message-fname"** (error_string)
+4.  **Error.nameError**(errorMessage)
+
+```
+    this.firstNameInput.addEventListener("change", () => {
+      this.checkUserInput(
+        this.firstNameInput,
+        Validator.nameTest,
+        "error-message-fname",
+        Error.nameError
+      );
+    });
+```
+
+checkUserInput() will then call the Validator.validate() method which tests the
+user supplied data against a regular expression. As the user has typed in a
+series of numbers and the 'nameTest' is a test for letters, the
 Validate.validate() method will return false.
 
-Because the Validate.validate() method returned false, the checkUserInput()
-method will call the Error.errorHandler() method. The result of this method is
-that an error message will appear below the 'First Name' input.
-
-
+Because Validate.validate() returned false, checkUserInput() will call the
+Error.errorHandler() method. The result of this method is that an error message
+will appear below the 'First Name' input.

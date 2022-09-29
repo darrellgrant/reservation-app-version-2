@@ -8,7 +8,7 @@ include_once "header.php";
         <div class="col">
 
             <!--FORM-->
-            <form class="form-style mb-3 custom-margin" id="reservation-form">
+            <form class="form-style mb-3 custom-margin" id="reservation-form" action="process.php" method="post">
                 <div id="tab-one" class="tab">
                     <div class="mb-3">
                         <label for="formInput_FirstName" class="form-label">First Name</label>
@@ -88,9 +88,9 @@ include_once "header.php";
 
                 </div>
                 <!--END TAB FOUR-->
-                <input class="btn btn-primary me-3" type="button" value="Previous" id="prev-btn">
+                <button class="btn btn-primary me-3" type="button" id="prev-btn"> Previous</button>
 
-                <input class="btn btn-primary" type="button" value="Next" id="next-btn">
+                <button class="btn btn-primary" type="button"  id="next-btn">Next</button>
 
         </div>
         <!--END MID COL-->

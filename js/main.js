@@ -1,6 +1,7 @@
 const currentLocation = location.href; //returns the href (URL) of the current page
 const menuItem = document.querySelectorAll("a");
 const menuLength = menuItem.length;
+
 for (let i = 0; i < menuLength; i++) {
   if (menuItem[i].href === currentLocation) {
     //menuItem[i].className = "active";
@@ -8,17 +9,21 @@ for (let i = 0; i < menuLength; i++) {
   }
 }
 
+//creates a 'short-hand' for 'document.getElementById()
 function _(id) {
   return document.getElementById(id);
 }
 
-let currentTab = 0;
-const min_length = 1;
-const error_flag = 1;
+const form = _("reservation-form");
+
+//let currentTab = 0;
+/* const min_length = 1;
+const error_flag = 1; */
 
 class ReservationForm {
   constructor() {
     this.form = _("reservation-form");
+    this.currentTab = 0;
     this.nextBtn = _("next-btn");
     this.prevBtn = _("prev-btn");
     this.firstNameInput = _("formInput_FirstName");
@@ -28,96 +33,101 @@ class ReservationForm {
     this.timeInput = _("formInput_Time");
     this.guestsInput = _("formInput_Guests");
 
-    this.nextBtn.addEventListener("click", this.checkEmptyInput.bind(this));
     this.firstNameInput.addEventListener("change", () => {
-      if (
-        !Validator.validate(
-          this.firstNameInput.value.trim(),
-          Validator.nameTest
-        ) &&
-        this.firstNameInput.value != ""
-      ) {
-        Error.errorHandler(
-          this.firstNameInput,
-          "error-message-fname",
-          Error.nameError
-        );
-        /* _("error-message-fname").innerHTML =
-          "Please enter only letters, no numbers or spaces";
-        this.firstNameInput.onkeyup = () =>
-          (_("error-message-fname").innerHTML = ""); */
-      }
+      this.checkUserInput(
+        this.firstNameInput,
+        Validator.nameTest,
+        "error-message-fname",
+        Error.nameError
+      );
+    });
+
+    this.lastNameInput.addEventListener("change", () => {
+      this.checkUserInput(
+        this.lastNameInput,
+        Validator.nameTest,
+        "error-message-lname",
+        Error.nameError
+      );
+    });
+
+    this.phoneNumberInput.addEventListener("change", () => {
+      this.checkUserInput(
+        this.phoneNumberInput,
+        Validator.phoneTest,
+        "error-message-phone",
+        Error.numberError
+      );
+    });
+
+    this.nextBtn.addEventListener("click", () => {
+      this.nextPrev(1);
+    });
+
+    this.prevBtn.addEventListener("click", () => {
+      this.nextPrev(-1);
     });
   }
 
-  advance(selector1, selector2) {
-    _(selector1).style.display = "none";
-    _(selector2).style.display = "block";
-    _("prev-btn").style.display = "inline";
-    currentTab++;
-  }
-  goBack(selector1, selector2) {
-    _(selector1).style.display = "none";
-    _(selector2).style.display = "block";
-    if (currentTab === 0) {
-      _("prev-btn").style.display = "none";
-    }
-    currentTab--;
-  }
-
-  navigate(num) {
-    const tabs = document.getElementsByClassName("tab");
-    //validate
-    tabs[currentTab].style.display = "none";
-    currentTab = currentTab + num;
-    if (currentTab >= tabs.length) {
-      //submit....
+  checkUserInput(target, targetTest, error_string, errorMessage) {
+    if (
+      !Validator.validate(target.value.trim(), targetTest) &&
+      target.value != ""
+    ) {
+      Error.errorHandler(target, error_string, errorMessage);
     }
   }
 
-  checkEmptyInput() {
-    if (currentTab === 0) {
-      this.enteredFirstName = this.firstNameInput.value.trim();
-      this.enteredLastName = this.lastNameInput.value.trim();
-      this.enteredPhone = this.phoneNumberInput.value.trim();
-      this.enteredValues = [
-        this.enteredFirstName,
-        this.enteredLastName,
-        this.enteredPhone,
-      ];
-    }
-
-    if (currentTab === 1) {
-      this.enteredDate = this.dateInput.value.trim();
-      this.enteredTime = this.timeInput.value.trim();
-      this.enteredGuests = this.guestsInput.value.trim();
-      this.enteredValues = [
-        this.enteredDate,
-        this.enteredTime,
-        this.enteredGuests,
-      ];
-    }
-
-    console.log("enteredValues array", this.enteredValues);
-    this.returnedValues = this.enteredValues.filter(function (value) {
-      if (value.length > 0) {
-        return value;
-      }
-    });
-    console.log("returnedValuesArray", this.returnedValues);
-
-    if (this.returnedValues.length < this.enteredValues.length) {
-      return;
+  showTab(tabIndex) {
+    const tabList = document.getElementsByClassName("tab");
+    console.log("showtab");
+    console.log(tabList.length);
+    console.log(tabIndex);
+    tabList[tabIndex].style.display = "block";
+    if (tabIndex === 0) {
+      this.prevBtn.style.display = "none";
     } else {
-      if (!Validator.validate(this.enteredFirstName, Validator.nameTest)) {
-      }
-
-      this.advance("tab-one", "tab-two");
-      // _("tab-one").style.display = "none";
-      // _("tab-two").style.display = "block";
-      // _("prev-btn").style.display = "inline";
-      // currentTab++;
+      this.prevBtn.style.display = "inline";
     }
+    if (tabIndex == tabList.length - 1) {
+      this.nextBtn.innerHTML = "Submit";
+    } else {
+      this.nextBtn.innerHTML = "Next";
+    }
+  }
+
+  nextPrev(n) {
+    const tabList = document.getElementsByClassName("tab");
+    if (n === 1 && !this.checkInputFilled()) {
+      return;
+    }
+    tabList[this.currentTab].style.display = "none";
+    this.currentTab = this.currentTab + n;
+    if (this.currentTab >= tabList.length) {
+      this.nextBtn.setAttribute("type", "submit");
+      this.form.submit();
+      return;
+    }
+    this.showTab(this.currentTab);
+  }
+
+  checkInputFilled() {
+    //function validateForm()
+    // This function deals with validation of the form fields
+    const tabList = document.getElementsByClassName("tab");
+    const inputList = tabList[this.currentTab].getElementsByTagName("input");
+    let i;
+    let valid = true;
+
+    // A loop that checks every input field in the current tab:
+    for (i = 0; i < inputList.length; i++) {
+      // If a field is empty...
+      if (inputList[i].value == "") {
+        // and set the current valid status to false:
+        valid = false;
+      }
+    }
+    return valid; // return the valid status
   }
 }
 
@@ -142,4 +152,7 @@ class Error {
   }
 }
 
-const reservationForm = new ReservationForm();
+if (form) {
+  const reservationForm = new ReservationForm();
+  reservationForm.showTab(0);
+}

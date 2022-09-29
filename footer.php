@@ -18,5 +18,25 @@
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
       crossorigin="anonymous"
     ></script>
+    <!--jQuery date and time picker-->
+    <script src="js/jquery-3.6.0.js"></script>
+    <script src="jqueryUI/jquery-ui.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+    <script>
+      var minDate = new Date();
+      $("#formInput_Date").datepicker({
+        minDate: minDate,
+      });
+    </script>
+    <script>
+      $(document).ready(function () {
+        $("#formInput_Time").timepicker({
+          interval: 30,
+          scrollbar: true,
+          minTime: "17",
+          maxTime: "10:30pm",
+        });
+      });
+    </script>
   </body>
 </html>
