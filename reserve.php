@@ -1,7 +1,6 @@
 <?php
 $title = "Reserve a Seat";
 include_once "header.php";
-
 ?>
 <section class="reserve-image">
 <div class="container">

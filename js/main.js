@@ -102,8 +102,11 @@ class ReservationForm {
     console.log(preFormattedNumber);
     let newFormattedNumber = preFormattedNumber.splice(0, 0, "(");
     console.log(preFormattedNumber);
-    newFormattedNumber = preFormattedNumber.splice(4, 1, ")");
-    console.log(preFormattedNumber);
+    if (preFormattedNumber[3] === "-") {
+      newFormattedNumber = preFormattedNumber.splice(4, 1, ")");
+      console.log(preFormattedNumber);
+    }
+
     newFormattedNumber = preFormattedNumber.join("");
     console.log(newFormattedNumber);
     this.phoneNumberInput.value = newFormattedNumber;
