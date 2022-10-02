@@ -32,7 +32,7 @@ session_start();
 
      <script src="js/main.js" defer></script>
 
-    <title>Welcome to Rick's Cafe</title>
+    <title><?php echo $title; ?></title>
   </head>
   <body>
 

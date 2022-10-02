@@ -1,0 +1,18 @@
+reservation.php - main sign up page --> includes/process.inc.php --> return to: guestinfo.php
+
+update.php - user wants to update JUST SUBMITTED reservation info --> includes/update.inc.php --> return to: guestinfo_updated.php
+
+guestinfo.php - user views just submitted info - button link to update.php for edit
+
+review.php - user LATER wants to view/change reservation info --> includes/review.lookup.php-->return to: guestinfo.php
+
+
+
+cancel.step1.php - user looks up reservation to cancel -- includes/cancel.lookup.inc.php -- return to: cancel.step2.php
+
+cancel.step2.php - user has located reservation --> includes/cancel.inc.php --> return to: cancel.step3
+
+
+reserve.php --> includes/process.inc.php --> return to: guestinfo.php
+guestinfo.php if user wants to edit info now --> update.php and form is pre-filled.
+if user wants to edit info later --> update.php and user fills out form to lookup reservation

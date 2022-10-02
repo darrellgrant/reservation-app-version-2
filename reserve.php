@@ -1,5 +1,7 @@
 <?php
+$title = "Reserve a Seat";
 include_once "header.php";
+
 ?>
 <section class="reserve-image">
 <div class="container">
@@ -8,21 +10,21 @@ include_once "header.php";
         <div class="col">
 
             <!--FORM-->
-            <form class="form-style mb-3 custom-margin" id="reservation-form" action="process.php" method="post">
+            <form class="form-style mb-3 custom-margin" id="reservation-form" action="includes/process.inc.php" method="post">
                 <div id="tab-one" class="tab">
                     <div class="mb-3">
                         <label for="formInput_FirstName" class="form-label">First Name</label>
-                        <input type="text" class="form-control" id="formInput_FirstName" placeholder="First Name">
+                        <input type="text" class="form-control" id="formInput_FirstName" placeholder="First Name" name="fName">
                         <div class="error-text" id="error-message-fname"></div>
                     </div>
                     <div class="mb-3">
                         <label for="formInput_LastName" class="form-label">Last Name</label>
-                        <input type="text" class="form-control" id="formInput_LastName" placeholder="Last Name">
+                        <input type="text" class="form-control" id="formInput_LastName" placeholder="Last Name" name="lName">
                         <div class="error-text" id="error-message-lname"></div>
                     </div>
                     <div class="mb-3">
                         <label for="formInput_Phone" class="form-label">Phone Number</label>
-                        <input type="text" class="form-control" id="formInput_Phone" placeholder="Phone Number Ex: 123-123-1234">
+                        <input type="text" class="form-control" id="formInput_Phone" placeholder="Phone Number Ex: 123-123-1234" name="phNumber">
                         <div class="error-text" id="error-message-phone"></div>
                     </div>
                     <!--END TAB ONE-->
@@ -30,15 +32,18 @@ include_once "header.php";
                 <div id="tab-two" class="tab">
                     <div class="mb-3">
                         <label for="formInput_Date" class="form-label">Date</label>
-                        <input type="text" class="form-control" id="formInput_Date" placeholder="Date">
+                        <input type="text" class="form-control" id="formInput_Date" placeholder="Date" name="date">
+                        <div class="error-text" id="error-message-date"></div>
                     </div>
                     <div class="mb-3">
                         <label for="formInput_Time" class="form-label">Time</label>
-                        <input type="text" class="form-control" id="formInput_Time" placeholder="Time">
+                        <input type="text" class="form-control" id="formInput_Time" placeholder="Time" name="time">
+                         <div class="error-text" id="error-message-time"></div>
                     </div>
                     <div class="mb-3">
                         <label for="formInput_Guests" class="form-label">Number of Guests</label>
-                        <input type="text" class="form-control" id="formInput_Guests" placeholder="Enter Number of Guests">
+                        <input type="text" class="form-control" id="formInput_Guests" placeholder="Enter Number of Guests"  name="guests">
+                         <div class="error-text" id="error-message-guests"></div>
                     </div>
 
                 </div>
@@ -65,14 +70,14 @@ include_once "header.php";
                 <div id="tab-four" class="tab">
                     <div>Seating Preference</div>
                     <div class="mb-3 form-check">
-                        <input class="form-check-input" type="radio" name="seating-check" id="smoking" checked>
+                        <input class="form-check-input" type="radio" name="seating-check" id="smoking" value="smoking" checked>
                         <label class="form-check-label" for="smoking">
                                 Smoking Section
                             </label>
 
                     </div>
                     <div class="mb-3 form-check">
-                        <input class="form-check-input" type="radio" name="seating-check" id="no-smoking">
+                        <input class="form-check-input" type="radio" name="seating-check" id="no-smoking" value="no smoking">
                         <label class="form-check-label" for="no-smoking">
                                 Non-Smoking Section
                             </label>
@@ -80,7 +85,7 @@ include_once "header.php";
                     </div>
 
                     <div class="mb-3 form-check">
-                        <input class="form-check-input" type="radio" name="seating-check" id="no-preference">
+                        <input class="form-check-input" type="radio" name="seating-check" id="no-preference" value="no preference">
                         <label class="form-check-label" for="no-preference">
                                 No Preference
                             </label>
@@ -90,7 +95,7 @@ include_once "header.php";
                 <!--END TAB FOUR-->
                 <button class="btn btn-primary me-3" type="button" id="prev-btn"> Previous</button>
 
-                <button class="btn btn-primary" type="button"  id="next-btn">Next</button>
+                <button class="btn btn-primary" type="button"  id="next-btn" name='submit'>Next</button>
 
         </div>
         <!--END MID COL-->

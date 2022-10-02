@@ -58,6 +58,34 @@ class ReservationForm {
         "error-message-phone",
         Error.numberError
       );
+      this.formatPhoneNumber();
+    });
+
+    this.dateInput.addEventListener("change", () => {
+      this.checkUserInput(
+        this.dateInput,
+        Validator.dateTest,
+        "error-message-date",
+        Error.dateError
+      );
+    });
+
+    this.timeInput.addEventListener("change", () => {
+      this.checkUserInput(
+        this.timeInput,
+        Validator.timeTest,
+        "error-message-time",
+        Error.timeError
+      );
+    });
+
+    this.guestsInput.addEventListener("change", () => {
+      this.checkUserInput(
+        this.guestsInput,
+        Validator.guestNumTest,
+        "error-message-guests",
+        Error.guestsError
+      );
     });
 
     this.nextBtn.addEventListener("click", () => {
@@ -67,6 +95,18 @@ class ReservationForm {
     this.prevBtn.addEventListener("click", () => {
       this.nextPrev(-1);
     });
+  }
+
+  formatPhoneNumber() {
+    const preFormattedNumber = Array.from(this.phoneNumberInput.value);
+    console.log(preFormattedNumber);
+    let newFormattedNumber = preFormattedNumber.splice(0, 0, "(");
+    console.log(preFormattedNumber);
+    newFormattedNumber = preFormattedNumber.splice(4, 1, ")");
+    console.log(preFormattedNumber);
+    newFormattedNumber = preFormattedNumber.join("");
+    console.log(newFormattedNumber);
+    this.phoneNumberInput.value = newFormattedNumber;
   }
 
   checkUserInput(target, targetTest, error_string, errorMessage) {
@@ -99,6 +139,9 @@ class ReservationForm {
   nextPrev(n) {
     const tabList = document.getElementsByClassName("tab");
     if (n === 1 && !this.checkInputFilled()) {
+      return;
+    }
+    if (Error.globalError) {
       return;
     }
     tabList[this.currentTab].style.display = "none";
@@ -144,11 +187,19 @@ class Validator {
 }
 
 class Error {
+  static globalError = false;
   static nameError = "Please enter only letters, no numbers or spaces";
   static numberError = "Please enter phone number in format: 123-456-7890";
+  static dateError = "Please enter a date in format: mm/dd/yyyy";
+  static timeError = "Please enter a time in format: hh:mm";
+  static guestsError = "Please enter a number between 1 and 12";
   static errorHandler(formInput, selector, errorMessage) {
     _(selector).innerHTML = errorMessage;
-    formInput.onkeyup = () => (_(selector).innerHTML = "");
+    this.globalError = true;
+    formInput.onkeyup = () => {
+      _(selector).innerHTML = "";
+      this.globalError = false;
+    };
   }
 }
 
