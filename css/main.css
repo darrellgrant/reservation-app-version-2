@@ -80,3 +80,8 @@ ul li a.active {
 .error-text {
   color: crimson;
 }
+
+#guest-info {
+  background-color: aliceblue;
+  width: 500px;
+}

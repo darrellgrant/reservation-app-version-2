@@ -58,7 +58,7 @@ class ReservationForm {
         "error-message-phone",
         Error.numberError
       );
-      this.formatPhoneNumber();
+      //this.formatPhoneNumber();
     });
 
     this.dateInput.addEventListener("change", () => {
