@@ -15,8 +15,48 @@ if (isset($_SESSION['guest'])) {
     <div class="row align-items-center ">
 
     <div class="col">
-        <div class="form-style" id="guest-info"><h3><?php echo "Reservation for Guest<br> " . $guest['firstname'] . " " . $guest['lastname']; ?></h3></div>
+        <section>
+        <div class="form-style custom-margin">
+            <div>
+                <h3>
+                    <?php echo "Reservation for Guest" ?>
+                </h3>
+            </div>
+            <div>
+                <h3>
+                    <?php echo $guest['firstname'] . " " . $guest['lastname']; ?>
+                </h3>
+            </div>
+           <div>
+            Date: <b><?php echo date('m/d/Y', strtotime($guest['guest_date'])); ?> </b> Time: <b> <?php echo $guest['guest_time'] ?></b>
+           </div>
+           <div>
+            For: <b><?php echo $guest['guest_number'] ?></b> Guests
+           </div>
+           <div>
+            Seating Preference: <b><?php echo $guest['seating'] ?></b>
+           </div>
+           <div>
+            Accomodations Needed? <b><?php echo $guest['accomodations'] ?></b>
+           </div>
+            <div>
+                Contact Number: <b><?php echo $guest['phone'] ?></b>
+            </div>
+        </section>
+        <section>
+            <div class="form-style custom-margin">
+                <div>
+                    <p>If the above information is accurate, click the 'Exit' button.</p>
+                    <p>If you wish to make changes, please click the 'Edit' button.</p>
+                 </div>
+                 <div>
+                    <a href="index.php"><button type="button" class="btn btn-success me-3">Exit</button></a>
+                    <button type="button" class="btn btn-primary">Edit Details</button>
 
+                </div>
+
+
+        </section>
     </div>
     </div>
 </div>
