@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-
 if (isset($_POST['submit'])) {
     include_once 'dbh.inc.php';
 
@@ -19,11 +18,9 @@ if (isset($_POST['submit'])) {
 
     /* include "../classes/signUpGuest.php";
     $guest = new Guest($firstName, $lastName, $phoneNumber, $date, $time, $guests, $accomodations, $seating); */
-    $sql_insert = "INSERT INTO guests (firstname,lastname,phone,guest_date,guest_time,guest_number,accomodations,seating)
-    VALUES('$firstName', '$lastName', '$phoneNumber', '$date', '$time', '$guests', '$accomodations', '$seating');";
-    mysqli_query($conn, $sql_insert);
-
-    
+    $sql_update = "UPDATE guests SET firstname='$firstName', lastname='$lastName', phone='$phoneNumber', guest_date='$date', guest_time='$time', guest_number='$guests', accomodations='$accomodations', seating='$seating'
+    WHERE lastname='$lastName' AND phone='$phoneNumber'";
+    mysqli_query($conn, $sql_update);
 
     $sql_select = "SELECT * FROM guests WHERE phone='$phoneNumber' AND lastname ='$lastName'";
     $result = mysqli_query($conn, $sql_select);
