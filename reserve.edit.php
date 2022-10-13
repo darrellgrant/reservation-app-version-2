@@ -20,7 +20,7 @@ if (!isset($_SESSION['guest'])) {
         <div class="col">
 
             <!--FORM-->
-            <form class="form-style mb-3 custom-margin" id="reservation-form" action="includes/process.inc.php" method="post">
+            <form class="form-style mb-3 custom-margin" id="reservation-form" action="includes/update.inc.php" method="post">
                 <!--'pre-checks -->
                 <!--pre-'checks' radio buttons with the user selection from reservation form-->
                 <?php
@@ -107,7 +107,7 @@ include_once "pre-checks.php";
                                 No Preference
                             </label>
                     </div>
-
+                    <input type="hidden" name="guest-ID" value="<?php echo $guest['guest_ID']; ?>">
                 </div>
                 <!--END TAB FOUR-->
                 <button class="btn btn-primary me-3" type="button" id="prev-btn"> Previous</button>

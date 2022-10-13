@@ -1,8 +1,11 @@
 <?php
 session_start();
+echo "YAYA";
 
 if (isset($_POST['submit'])) {
+
     include_once 'dbh.inc.php';
+    $guest_ID = check_input($POST['guest-ID']);
 
     $firstName = check_input($_POST['fName']);
     $lastName = check_input($_POST['lName']);
@@ -19,14 +22,20 @@ if (isset($_POST['submit'])) {
     /* include "../classes/signUpGuest.php";
     $guest = new Guest($firstName, $lastName, $phoneNumber, $date, $time, $guests, $accomodations, $seating); */
     $sql_update = "UPDATE guests SET firstname='$firstName', lastname='$lastName', phone='$phoneNumber', guest_date='$date', guest_time='$time', guest_number='$guests', accomodations='$accomodations', seating='$seating'
-    WHERE lastname='$lastName' AND phone='$phoneNumber'";
+     WHERE guest_ID='$guest_ID'";
     mysqli_query($conn, $sql_update);
 
-    $sql_select = "SELECT * FROM guests WHERE phone='$phoneNumber' AND lastname ='$lastName'";
+    $sql_select = "SELECT * FROM guests WHERE guest_ID='$guest_ID'";
     $result = mysqli_query($conn, $sql_select);
     $resultCheck = mysqli_num_rows($result);
     if ($resultCheck < 1) {
-        header("Location: ../404.php");
+        echo "YAYA";
+
+        //header("Location: ../404.php");
+        header("Location: update.inc.php?YO=$guest_ID");
+        echo $guest_ID;
+        echo "YAYA";
+
         exit();
     } else {
         $row = mysqli_fetch_assoc($result);
