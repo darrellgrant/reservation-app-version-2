@@ -4,7 +4,7 @@
   <div class="container p-1">
      <!-- Copyright -->
   <div class="text-center p-1" style="background-color: rgba(0, 0, 0, 0.2);">
-    © 2020 Copyright:
+    &copy; <?php echo date('Y'); ?>
     <a class="text-white" href="https://darrellgrant.net/">darrellgrant.net</a>
   </div>
   <!-- Copyright -->   </div>

@@ -15,6 +15,7 @@ function _(id) {
 }
 
 const form = _("reservation-form");
+const lookUp = _("lookUpForm");
 
 //let currentTab = 0;
 /* const min_length = 1;
@@ -199,6 +200,7 @@ class Error {
   static errorHandler(formInput, selector, errorMessage) {
     _(selector).innerHTML = errorMessage;
     this.globalError = true;
+    alert(this.globalError);
     formInput.onkeyup = () => {
       _(selector).innerHTML = "";
       this.globalError = false;
@@ -206,7 +208,81 @@ class Error {
   }
 }
 
+class LookUpReservation {
+  constructor() {
+    this.form = _("lookUpForm");
+    this.first = _("formInput_First");
+    this.last = _("formInput_Last");
+    this.phone = _("formInput_Phone");
+    this.submitBtn = _("submit-btn");
+    this.submitBtn.addEventListener("click", () => {
+      this.submitForm();
+    });
+
+    this.first.addEventListener("change", () => {
+      this.checkUserInput(
+        this.first,
+        Validator.nameTest,
+        "error-message-first",
+        Error.nameError
+      );
+    });
+
+    this.last.addEventListener("change", () => {
+      this.checkUserInput(
+        this.last,
+        Validator.nameTest,
+        "error-message-last",
+        Error.nameError
+      );
+    });
+
+    this.phone.addEventListener("change", () => {
+      this.checkUserInput(
+        this.phone,
+        Validator.phoneTest,
+        "error-message-phone",
+        Error.numberError
+      );
+    });
+  }
+
+  checkUserInput(target, targetTest, error_string, errorMessage) {
+    if (
+      !Validator.validate(target.value.trim(), targetTest) &&
+      target.value != ""
+    ) {
+      Error.errorHandler(target, error_string, errorMessage);
+    }
+  }
+
+  checkInputFilled() {
+    const inputList = document.getElementsByTagName("input");
+    let valid = "true";
+    let i;
+    for (i = 0; i < inputList.length; i++) {
+      if (inputList[i].value == "") {
+        valid = false;
+      }
+    }
+    return valid;
+  }
+
+  submitForm() {
+    if (Error.globalError || !this.checkInputFilled()) {
+      return;
+    } else {
+      this.submitBtn.setAttribute("type", "submit");
+      this.form.submit();
+    }
+  }
+}
+
 if (form) {
   const reservationForm = new ReservationForm();
   reservationForm.showTab(0);
+}
+
+if (lookUp) {
+  const lookUpForm = new LookUpReservation();
 }
