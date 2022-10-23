@@ -11,7 +11,7 @@ if (isset($_POST['submit'])) {
     $result = mysqli_query($conn, $sql);
     $resultCheck = mysqli_num_rows($result);
     if ($resultCheck < 1) {
-        header("Location: ../404.php");
+        header("Location: ../review.php?error=not_found");
         exit();
 
     } else {

@@ -34,6 +34,19 @@ include_once "header.php";
             </button>
           </form>
         </section>
+        <section>
+          <!--if submitted name not found in db -->
+          <?php
+if (isset($_GET['error'])): ?>
+
+
+          <div class="form-style mb-3 custom-margin error-text">
+            <p>Sorry, that information was not found!</p>
+          </div>
+
+
+        <?php endif;?>
+        </section>
       </div>
     </div>
   </div>
@@ -42,4 +55,4 @@ include_once "header.php";
 
 <?php
 include_once 'footer.php';
-?>// Paste your HTML code to be formatted
+?>
