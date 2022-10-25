@@ -65,6 +65,14 @@ ul li a.active {
   width: 40%;
   background-color: aliceblue;
 }
+.heading-style {
+  display: block;
+  margin: 0 auto;
+  border-radius: 20px;
+  padding: 10px;
+  width: 40%;
+  background-color: aliceblue;
+}
 
 .form-style > #tab-two,
 #tab-three,
@@ -81,4 +89,6 @@ ul li a.active {
   color: crimson;
 }
 
-
+.text-center {
+  text-align: center;
+}

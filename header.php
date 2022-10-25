@@ -30,7 +30,7 @@ session_start();
       href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css"/>
     <link rel="stylesheet" href="css/main.css">
 
-     <script src="js/main.js" defer></script>
+     <script src="js/main2.js" defer></script>
 
     <title><?php echo $title; ?></title>
   </head>
@@ -41,7 +41,8 @@ session_start();
           <ul class="nav justify-content-end">
               <li><a class="nav-link" href="index.php">Home</a></li>
               <li><a class="nav-link" href="reserve.php">Reserve a Table</a></li>
-              <li><a class="nav-link" href="review.php">Change Reservation</a></li>
+              <li><a class="nav-link" href="lookup.php">Look Up a Reservation</a></li>
+              <li><a class="nav-link" href="reserve.edit.php">Change Reservation</a></li>
               <li><a class="nav-link" href="cancel.php">Cancel</a></li>
           </ul>
         </div><!--end container-->

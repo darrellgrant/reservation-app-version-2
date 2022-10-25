@@ -1,10 +1,12 @@
 window.addEventListener("load", () => {
   const currentLocation = location.href; //returns the href (URL) of the current page
-  const menuItem = document.querySelectorAll("a");
+  
+  const menuItem = document.querySelectorAll(".nav-link");
+ 
   const menuLength = menuItem.length;
 
   for (let i = 0; i < menuLength; i++) {
-    if (menuItem[i].href === currentLocation) {
+    if (menuItem[i].href === currentLocation ) {
       //menuItem[i].className = "active";
       menuItem[i].classList.add("active");
     }
