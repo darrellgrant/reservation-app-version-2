@@ -19,9 +19,7 @@ window.addEventListener("load", () => {
 
   const form = _("reservation-form");
 
-  //let currentTab = 0;
-  /* const min_length = 1;
-const error_flag = 1; */
+
 
   class ReservationForm {
     constructor() {
@@ -215,5 +213,6 @@ const error_flag = 1; */
 } */
 
   const reservationForm = new ReservationForm();
+  
   reservationForm.showTab(0);
 });

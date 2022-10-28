@@ -30,7 +30,7 @@ session_start();
       href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css"/>
     <link rel="stylesheet" href="css/main.css">
 
-     <script src="js/main2.js" defer></script>
+     <script src="js/main.js" defer></script>
 
     <title><?php echo $title; ?></title>
   </head>
