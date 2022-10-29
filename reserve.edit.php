@@ -5,7 +5,7 @@ $no = "";
 $smoking = "";
 $nonsmoking = "";
 $nopref = "";
-include_once "header.php";
+include_once "header_3.php";
 if (!isset($_SESSION['guest'])) {
     header("Location: 404.php?error=invalid_access");
 } else {

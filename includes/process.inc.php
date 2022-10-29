@@ -22,9 +22,7 @@ if (isset($_POST['submit'])) {
     VALUES('$firstName', '$lastName', '$phoneNumber', '$date', '$time', '$guests', '$accomodations', '$seating');";
     mysqli_query($conn, $sql_insert);
 
-    
-
-    $sql_select = "SELECT * FROM guests WHERE phone='$phoneNumber' AND lastname ='$lastName'";
+    $sql_select = "SELECT * FROM guests WHERE phone='$phoneNumber' AND firstname='$firstName' AND lastname ='$lastName'";
     $result = mysqli_query($conn, $sql_select);
     $resultCheck = mysqli_num_rows($result);
     if ($resultCheck < 1) {
@@ -33,7 +31,7 @@ if (isset($_POST['submit'])) {
     } else {
         $row = mysqli_fetch_assoc($result);
         $_SESSION['guest'] = $row;
-        header("Location: ../reserve.read.php");
+        header("Location: ../view.php");
         exit();
 
     }

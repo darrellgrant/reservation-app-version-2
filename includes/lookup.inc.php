@@ -17,7 +17,7 @@ if (isset($_POST['submit'])) {
     } else {
         $row = mysqli_fetch_assoc($result);
         $_SESSION['guest'] = $row;
-        header("Location: ../reserve.read.php");
+        header("Location: ../view.php");
         exit();
     }
 

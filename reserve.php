@@ -8,6 +8,11 @@ include_once "header.php";
 
         <div class="col">
 
+            <div class="heading-style custom-margin text-center">
+            <h3>Make Your Reservation</h3>
+            <p>Fill in the required information below</p>
+            </div>
+
             <!--FORM-->
             <form class="form-style mb-3 custom-margin" id="reservation-form" action="includes/process.inc.php" method="post">
                 <div id="tab-one" class="tab">
