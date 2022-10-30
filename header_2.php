@@ -42,7 +42,7 @@ session_start();
               <li><a class="nav-link" href="index.php">Home</a></li>
               <li><a class="nav-link" href="reserve.php">Reserve a Table</a></li>
               <li><a class="nav-link" href="view.php">View Reservation</a></li>
-              <li><a class="nav-link" href="reserve.edit.php">Change Reservation</a></li>
+              <li><a class="nav-link" href="change.php">Change Reservation</a></li>
               <li><a class="nav-link" href="cancel.php">Cancel</a></li>
           </ul>
         </div><!--end container-->

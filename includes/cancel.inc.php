@@ -11,15 +11,23 @@ if (isset($_POST['submit-btn'])) {
     $result = mysqli_query($conn, $sql);
     $resultCheck = mysqli_num_rows($result);
     if ($resultCheck < 1) {
-        header("Location: ../lookup.php?error=not_found");
+        header("Location: ../cancel.php?error=not_found");
         exit();
 
     } else {
         $row = mysqli_fetch_assoc($result);
         $_SESSION['guest'] = $row;
-        header("Location: ../view.php");
+        header("Location: ../cancel.php?success=user_found");
         exit();
     }
+
+} elseif (isset($_POST['cancel-btn'])) {
+    include_once 'dbh.inc.php';
+    $guest_ID = check_input($_POST['guest-ID']);
+    $sql = "DELETE FROM guests WHERE guest_ID='$guest_ID'";
+    mysqli_query($conn, $sql);
+    header("Location: ../cancel.php?action=user_deleted");
+    exit();
 
 }
 

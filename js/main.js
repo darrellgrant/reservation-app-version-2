@@ -1,19 +1,37 @@
-window.addEventListener("load", () => {
-  const currentLocation = location.href; //returns the href (URL) of the current page
-  
-  const menuItem = document.querySelectorAll(".nav-link");
-  const menuLength = menuItem.length;
-  const queryString = "?error=not_found";
+const currentLocation = location.href; //returns the href (URL) of the current page
 
-  for (let i = 0; i < menuLength; i++) {
-    if (menuItem[i].href === currentLocation) {
-      //menuItem[i].className = "active";
-      menuItem[i].classList.add("active");
-    } else if (`${menuItem[i].href}${queryString}` === currentLocation) {
-      menuItem[i].classList.add("active");
-    }
+const menuItem = document.querySelectorAll(".nav-link");
+const menuLength = menuItem.length;
+let queryString = "";
+//?error=not_found
+
+function queryCheck() {
+  if (currentLocation.endsWith(".php")) {
+    return;
   }
+  if (currentLocation.includes("error")) {
+    queryString = "?error=not_found";
+  }
+  if (currentLocation.includes("success")) {
+    queryString = "?success=user_found";
+  }
+  if (currentLocation.includes("action")) {
+    queryString = "?action=user_deleted";
+  }
+  return queryString;
+}
+queryString = queryCheck();
 
+for (let i = 0; i < menuLength; i++) {
+  if (menuItem[i].href === currentLocation) {
+    //menuItem[i].className = "active";
+    menuItem[i].classList.add("active");
+  } else if (`${menuItem[i].href}${queryString}` === currentLocation) {
+    menuItem[i].classList.add("active");
+  }
+}
+
+window.addEventListener("load", () => {
   //creates a 'short-hand' for 'document.getElementById()
   function _(id) {
     return document.getElementById(id);
@@ -21,6 +39,17 @@ window.addEventListener("load", () => {
 
   const form = _("reservation-form");
   const lookUp = _("lookUpForm");
+
+  function hideCancelForm() {
+    const userFound = _("userFound");
+    const userDeleted = _("userDeleted");
+    if (userFound) {
+      lookUp.style.display = "none";
+    } else if (userDeleted) {
+      lookUp.style.display = "none";
+    }
+  }
+  hideCancelForm();
 
   class ReservationForm {
     constructor() {
@@ -95,7 +124,7 @@ window.addEventListener("load", () => {
       });
 
       this.prevBtn.addEventListener("click", () => {
-        this.nextPrev(-1);
+        this.nextPrev(-1); 
       });
     }
 

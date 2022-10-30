@@ -51,7 +51,7 @@ if (isset($_SESSION['guest'])) {
                  </div>
                  <div>
                     <a href="index.php"><button type="button" class="btn btn-success me-3">Exit</button></a>
-                    <a href="reserve.edit.php"><button type="button" class="btn btn-primary">Edit Details</button></a>
+                    <a href="change.php"><button type="button" class="btn btn-primary">Edit Details</button></a>
 
                 </div>
 

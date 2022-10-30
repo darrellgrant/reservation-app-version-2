@@ -1,13 +1,30 @@
 window.addEventListener("load", () => {
   const currentLocation = location.href; //returns the href (URL) of the current page
-  
+
   const menuItem = document.querySelectorAll(".nav-link");
- 
   const menuLength = menuItem.length;
+  let queryString = "";
+  //?error=not_found
+
+  function queryCheck() {
+    if (currentLocation.endsWith(".php")) {
+      return;
+    }
+    if (currentLocation.includes("error")) {
+      queryString = "?error=not_found";
+    }
+    if (currentLocation.includes("success")) {
+      queryString = "?success=user_found";
+    }
+    return queryString;
+  }
+  queryString = queryCheck();
 
   for (let i = 0; i < menuLength; i++) {
-    if (menuItem[i].href === currentLocation ) {
+    if (menuItem[i].href === currentLocation) {
       //menuItem[i].className = "active";
+      menuItem[i].classList.add("active");
+    } else if (`${menuItem[i].href}${queryString}` === currentLocation) {
       menuItem[i].classList.add("active");
     }
   }
@@ -18,8 +35,7 @@ window.addEventListener("load", () => {
   }
 
   const form = _("reservation-form");
-
-
+  const lookUp = _("lookUpForm");
 
   class ReservationForm {
     constructor() {
@@ -207,12 +223,80 @@ window.addEventListener("load", () => {
     }
   }
 
-  /* if (form) {
-  const reservationForm = new ReservationForm();
-  reservationForm.showTab(0);
-} */
+  class LookUpReservation {
+    constructor() {
+      this.form = _("lookUpForm");
+      this.first = _("formInput_First");
+      this.last = _("formInput_Last");
+      this.phone = _("formInput_Phone");
+      this.submitBtn = _("submit-btn");
+      this.form.addEventListener("submit", (e) => {
+        this.submitForm(e);
+      });
 
-  const reservationForm = new ReservationForm();
-  
-  reservationForm.showTab(0);
+      this.first.addEventListener("change", () => {
+        this.checkUserInput(
+          this.first,
+          Validator.nameTest,
+          "error-message-first",
+          Error.nameError
+        );
+      });
+
+      this.last.addEventListener("change", () => {
+        this.checkUserInput(
+          this.last,
+          Validator.nameTest,
+          "error-message-last",
+          Error.nameError
+        );
+      });
+
+      this.phone.addEventListener("change", () => {
+        this.checkUserInput(
+          this.phone,
+          Validator.phoneTest,
+          "error-message-phone",
+          Error.numberError
+        );
+      });
+    }
+
+    checkUserInput(target, targetTest, error_string, errorMessage) {
+      if (
+        !Validator.validate(target.value.trim(), targetTest) &&
+        target.value != ""
+      ) {
+        Error.errorHandler(target, error_string, errorMessage);
+      }
+    }
+
+    checkInputFilled() {
+      const inputList = document.getElementsByTagName("input");
+      let valid = "true";
+      let i;
+      for (i = 0; i < inputList.length; i++) {
+        if (inputList[i].value == "") {
+          valid = false;
+        }
+      }
+      return valid;
+    }
+
+    submitForm(e) {
+      if (Error.globalError || !this.checkInputFilled()) {
+        e.preventDefault();
+      } else {
+        //this.submitBtn.setAttribute("type", "submit");
+        this.form.submit();
+      }
+    }
+  }
+
+  if (lookUp) {
+    const lookUpForm = new LookUpReservation();
+  } else if (form) {
+    const reservationForm = new ReservationForm();
+    reservationForm.showTab(0);
+  }
 });

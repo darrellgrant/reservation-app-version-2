@@ -20,7 +20,7 @@ if (!isset($_SESSION['guest'])) {
         <div class="col">
 
             <!--FORM-->
-            <form class="form-style mb-3 custom-margin" id="reservation-form" action="includes/update.inc.php" method="post">
+            <form class="form-style mb-3 custom-margin" id="reservation-form" action="includes/change.inc.php" method="post">
                 <!--'pre-checks -->
                 <!--pre-'checks' radio buttons with the user selection from reservation form-->
                 <?php
