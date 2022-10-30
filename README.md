@@ -13,5 +13,6 @@ The app has four main features
 3.  User may choose to edit the submitted data.
 4.  User can cancel a submitted reservation.
 
-While the first version was written in procedural JavaScript, the updatted
-version is being written in Object Oriented JS.
+While the first version was written in procedural JavaScript, the updated
+version is being written in Object Oriented JS. Additionally, it is making use
+of Bootstrap 5.0.

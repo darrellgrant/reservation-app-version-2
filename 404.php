@@ -1,4 +1,5 @@
 <?php
+$title = "404";
 include_once 'header.php';
 ?>
     <div class="container">
@@ -8,7 +9,7 @@ include_once 'header.php';
                     <div class="heading-style custom-margin text-center">
                         <h3>Sorry, You've reached the dreaded </h3>
                         <h1>404 PAGE</h1>
-                        <p>Please return to the home page</p>
+                        <p>Please return to the <a href="index.php">home page</a></p>
                     </div>
                 </section>
             </div>
