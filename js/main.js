@@ -82,6 +82,10 @@ window.addEventListener("load", () => {
         );
       });
 
+      this.phoneNumberInput.addEventListener("keyup", () => {
+        this.phoneNumberFormatter();
+      });
+
       this.phoneNumberInput.addEventListener("change", () => {
         this.checkUserInput(
           this.phoneNumberInput,
@@ -89,7 +93,6 @@ window.addEventListener("load", () => {
           "error-message-phone",
           Error.numberError
         );
-        //this.formatPhoneNumber();
       });
 
       this.dateInput.addEventListener("change", () => {
@@ -128,19 +131,25 @@ window.addEventListener("load", () => {
       });
     }
 
-    formatPhoneNumber() {
-      const preFormattedNumber = Array.from(this.phoneNumberInput.value);
-      console.log(preFormattedNumber);
-      let newFormattedNumber = preFormattedNumber.splice(0, 0, "(");
-      console.log(preFormattedNumber);
-      if (preFormattedNumber[3] === "-") {
-        newFormattedNumber = preFormattedNumber.splice(4, 1, ")");
-        console.log(preFormattedNumber);
-      }
+    phoneNumberFormatter() {
+      const formattedInputValue = this.formatPhoneNumber(
+        this.phoneNumberInput.value
+      );
+      this.phoneNumberInput.value = formattedInputValue;
+    }
 
-      newFormattedNumber = preFormattedNumber.join("");
-      console.log(newFormattedNumber);
-      this.phoneNumberInput.value = newFormattedNumber;
+    formatPhoneNumber(value) {
+      if (!value) return value;
+      const phoneNumber = value.replace(/[^\d]/g, "");
+      const phoneNumberLength = phoneNumber.length;
+      if (phoneNumberLength < 4) return phoneNumber;
+      if (phoneNumberLength < 7) {
+        return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3)}`;
+      }
+      return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(
+        3,
+        6
+      )}-${phoneNumber.slice(6, 10)}`;
     }
 
     checkUserInput(target, targetTest, error_string, errorMessage) {
@@ -208,7 +217,7 @@ window.addEventListener("load", () => {
       return valid; // return the valid status
     }
 
-    //if all inputs are empty, show error
+    //if ANY inputs are empty, show error
     showEmptyInputError() {
       _("error-message-empty-inputs").innerHTML =
         "One or more input values missing!";
@@ -220,7 +229,8 @@ window.addEventListener("load", () => {
 
   class Validator {
     static nameTest = /^[a-zA-Z\s]+$/;
-    static phoneTest = /^(\d{3}-\d{3}-\d{4})*$/;
+    //static phoneTest = /^(\d{3}-\d{3}-\d{4})*$/;
+    static phoneTest = /\(?\d{3}\)?-? *\d{3}-? *-?\d{4}/;
     static dateTest =
       /^((0?[1-9]|1[012])[- /.](0?[1-9]|[12][0-9]|3[01])[- /.](19|20)?[0-9]{2})*$/;
     static timeTest = /^\b((1[0-2]|0?[1-9]):([0-5][0-9]) ([AaPp][Mm]))$/;
@@ -276,6 +286,10 @@ window.addEventListener("load", () => {
         );
       });
 
+      this.phone.addEventListener("keyup", () => {
+        this.phoneNumberFormatter();
+      });
+
       this.phone.addEventListener("change", () => {
         this.checkUserInput(
           this.phone,
@@ -284,6 +298,25 @@ window.addEventListener("load", () => {
           Error.numberError
         );
       });
+    }
+
+    phoneNumberFormatter() {
+      const formattedInputValue = this.formatPhoneNumber(this.phone.value);
+      this.phone.value = formattedInputValue;
+    }
+
+    formatPhoneNumber(value) {
+      if (!value) return value;
+      const phoneNumber = value.replace(/[^\d]/g, "");
+      const phoneNumberLength = phoneNumber.length;
+      if (phoneNumberLength < 4) return phoneNumber;
+      if (phoneNumberLength < 7) {
+        return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3)}`;
+      }
+      return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(
+        3,
+        6
+      )}-${phoneNumber.slice(6, 10)}`;
     }
 
     checkUserInput(target, targetTest, error_string, errorMessage) {
@@ -307,9 +340,19 @@ window.addEventListener("load", () => {
       return valid;
     }
 
+    //if ANY inputs are empty, show error
+    showEmptyInputError() {
+      _("error-message-empty-inputs").innerHTML =
+        "One or more input values missing!";
+      this.form.onkeydown = () => {
+        _("error-message-empty-inputs").innerHTML = "";
+      };
+    }
+
     submitForm(e) {
       if (Error.globalError || !this.checkInputFilled()) {
         e.preventDefault();
+        this.showEmptyInputError();
       } else {
         //this.submitBtn.setAttribute("type", "submit");
         this.form.submit();

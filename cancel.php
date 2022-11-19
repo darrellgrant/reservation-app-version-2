@@ -34,6 +34,7 @@ if (isset($_SESSION['guest'])) {
               <input type="text"class="form-control" id="formInput_Phone" placeholder="Phone Number Example: 123-123-1234" name="phNumber" />
               <div class="error-text" id="error-message-phone"></div>
             </div>
+            <div class="error-text mb-3" id="error-message-empty-inputs"></div>
             <button class="btn btn-primary" type="submit" id="submit-btn" name="submit-btn">
               Submit
             </button>
@@ -45,7 +46,7 @@ if (isset($_SESSION['guest'])) {
 if (isset($_GET['error'])): ?>
 
 
-          <div class="heading-style text-center custom-margin error-text">
+          <div class="heading-style text-center custom-margin error-text col-sm-12 col-md-6">
             <h5>Sorry, that information was not found!</h5>
           </div>
 
@@ -58,7 +59,7 @@ if (isset($_GET['error'])): ?>
 if (isset($_GET['success'])): ?>
 
 
-          <section class="heading-style text-center custom-margin error-text" id="userFound">
+          <section class="heading-style text-center custom-margin error-text col-sm-12 col-md-6" id="userFound">
           <div>
           <h5>You are about to cancel Reservation for</h5>
             <h4> <?php echo $guest['firstname'] . " " . $guest['lastname']; ?></h4>
@@ -82,7 +83,7 @@ if (isset($_GET['success'])): ?>
 if (isset($_GET['action'])): ?>
 
 
-          <div class="heading-style text-center custom-margin error-text" id="userDeleted">
+          <div class="heading-style text-center custom-margin error-text col-sm-12 col-md-6" id="userDeleted">
             <h5>Your Reservation has been Deleted</h5>
           </div>
 

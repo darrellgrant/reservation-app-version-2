@@ -8,12 +8,12 @@ include_once "header.php";
     <div class="row align-items-center">
       <div class="col">
         <section>
-          <div class="heading-style custom-margin text-center col-sm-12 col-md-6">
+          <div class="heading-style custom-margin text-center">
             <h3>Look up your reservation</h3>
             <p>Fill in the required information below</p>
           </div>
 
-          <form class="form-style mb-3 custom-margin col-sm-12 col-md-6" action="includes/lookup.inc.php" id="lookUpForm" method="post">
+          <form class="form-style mb-3 custom-margin" action="includes/lookup.inc.php" id="lookUpForm" method="post">
             <div class="mb-3">
               <label for="formInput_First" class="form-label">First Name</label>
 
@@ -30,8 +30,7 @@ include_once "header.php";
               <input type="text"class="form-control" id="formInput_Phone" placeholder="Phone Number Example: 123-123-1234" name="phNumber" />
               <div class="error-text" id="error-message-phone"></div>
             </div>
-            <div class="error-text mb-3" id="error-message-empty-inputs"></div>
-            <button class="btn btn-primary" type="submit" id="submit-btn" name="submit-btn">
+            <button class="btn btn-primary" type="button" id="submit-btn" name="submit">
               Submit
             </button>
           </form>
@@ -42,7 +41,7 @@ include_once "header.php";
 if (isset($_GET['error'])): ?>
 
 
-          <div class="heading-style text-center custom-margin error-text col-sm-12 col-md-6">
+          <div class="heading-style text-center custom-margin error-text">
             <h5>Sorry, that information was not found!</h5>
           </div>
 
