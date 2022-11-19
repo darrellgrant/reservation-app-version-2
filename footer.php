@@ -1,5 +1,5 @@
 
-  <footer class="text-center text-white fixed-bottom custom-size" style="background-color: #21081a;">
+  <footer class="text-center text-white fixed-bottom custom-size d-none d-md-block" style="background-color: #21081a;">
   <!-- Grid container -->
   <div class="container p-1">
      <!-- Copyright -->

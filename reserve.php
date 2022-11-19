@@ -6,15 +6,15 @@ include_once "header.php";
 <div class="container">
     <div class="row align-items-center ">
 
-        <div class="col">
+        <div class="col ">
 
-            <div class="heading-style custom-margin text-center">
+            <div class="heading-style custom-margin text-center col-sm-12 col-md-6">
             <h3>Make Your Reservation</h3>
             <p>Fill in the required information below</p>
             </div>
 
             <!--FORM-->
-            <form class="form-style mb-3 custom-margin" id="reservation-form" action="includes/process.inc.php" method="post">
+            <form class="form-style mb-3 custom-margin col-sm-12 col-md-6" id="reservation-form" action="includes/process.inc.php" method="post">
                 <div id="tab-one" class="tab">
                     <div class="mb-3">
                         <label for="formInput_FirstName" class="form-label">First Name</label>
@@ -41,8 +41,7 @@ include_once "header.php";
                     </div>
                     <div class="mb-3">
                         <label for="formInput_Time" class="form-label">Time</label>
-                        <input type="text" class="form-control" id="formInput_Time" placeholder="Time" name="time">
-                         <div class="error-text" id="error-message-time"></div>
+                        <input type="text" class="form-control" id="formInput_Time" placeholder="Time" name="time"> 
                     </div>
                     <div class="mb-3">
                         <label for="formInput_Guests" class="form-label">Number of Guests</label>
