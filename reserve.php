@@ -41,11 +41,11 @@ include_once "header.php";
                     </div>
                     <div class="mb-3">
                         <label for="formInput_Time" class="form-label">Time</label>
-                        <input type="text" class="form-control" id="formInput_Time" placeholder="Time" name="time"> 
+                        <input type="text" class="form-control" id="formInput_Time" placeholder="Time" name="time">
                     </div>
                     <div class="mb-3">
                         <label for="formInput_Guests" class="form-label">Number of Guests</label>
-                        <input type="text" class="form-control" id="formInput_Guests" placeholder="Enter Number of Guests"  name="guests">
+                        <input type="text" class="form-control" id="formInput_Guests" placeholder="Number of Guests (Rick's can comfortably seat up to 12 guests)"  name="guests">
                          <div class="error-text" id="error-message-guests"></div>
                     </div>
 
@@ -67,6 +67,9 @@ include_once "header.php";
                         <label class="form-check-label" for="yes-accomodations">
                                Yes Accomodations Needed
                             </label>
+                    </div>
+                    <div class="mb-3">
+                        If yes, we will contact you to discuss accesibility for you or a guest
                     </div>
                 </div>
                 <!--END TAB THREE-->
@@ -96,6 +99,7 @@ include_once "header.php";
 
                 </div>
                 <!--END TAB FOUR-->
+                <div class="error-text mb-3" id="error-message-empty-inputs"></div>
                 <button class="btn btn-primary me-3" type="button" id="prev-btn"> Previous</button>
 
                 <button class="btn btn-primary" type="button"  id="next-btn" name='submit'>Next</button>

@@ -16,7 +16,7 @@ if (isset($_SESSION['guest'])) {
 
     <div class="col">
         <section>
-        <div class="form-style custom-margin">
+        <div class="form-style custom-margin col-sm-12 col-md-6">
             <div>
                 <h3>
                     <?php echo "Reservation for Guest" ?>
@@ -44,7 +44,7 @@ if (isset($_SESSION['guest'])) {
             </div>
         </section>
         <section>
-            <div class="form-style custom-margin">
+            <div class="form-style custom-margin col-sm-12 col-md-6">
                 <div>
                     <p>If the above information is accurate, click the 'Exit' button.</p>
                     <p>If you wish to make changes, please click the 'Edit' button.</p>

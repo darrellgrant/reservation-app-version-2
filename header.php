@@ -37,13 +37,14 @@ session_start();
   <body>
 
       <nav >
-        <div class="container">
+        <div class="container-fluid">
           <ul class="nav justify-content-end">
               <li><a class="nav-link" href="index.php">Home</a></li>
               <li><a class="nav-link" href="reserve.php">Reserve a Table</a></li>
               <li><a class="nav-link" href="lookup.php">Look Up a Reservation</a></li>
               <!-- <li><a class="nav-link" href="reserve.edit.php">Change Reservation</a></li> -->
               <li><a class="nav-link" href="cancel.php">Cancel</a></li>
+              <li><a class="nav-link" href="http://ricksblog.darrellgrant.net/">Blog</a></li>
           </ul>
         </div><!--end container-->
       </nav>

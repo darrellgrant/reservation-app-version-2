@@ -12,12 +12,12 @@ if (isset($_SESSION['guest'])) {
         <div class="row align-items-center">
       <div class="col">
         <section>
-          <div class="heading-style custom-margin text-center">
+          <div class="heading-style custom-margin text-center col-sm-12 col-md-6">
             <h3>Cancel your reservation</h3>
             <p>Fill in the required information below</p>
           </div>
 
-          <form class="form-style mb-3 custom-margin" action="includes/cancel.inc.php" id="lookUpForm" method="post">
+          <form class="form-style mb-3 custom-margin col-sm-12 col-md-6" action="includes/cancel.inc.php" id="lookUpForm" method="post">
             <div class="mb-3">
               <label for="formInput_First" class="form-label">First Name</label>
 

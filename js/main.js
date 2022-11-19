@@ -124,7 +124,7 @@ window.addEventListener("load", () => {
       });
 
       this.prevBtn.addEventListener("click", () => {
-        this.nextPrev(-1); 
+        this.nextPrev(-1);
       });
     }
 
@@ -173,6 +173,7 @@ window.addEventListener("load", () => {
     nextPrev(n) {
       const tabList = document.getElementsByClassName("tab");
       if (n === 1 && !this.checkInputFilled()) {
+        this.showEmptyInputError();
         return;
       }
       if (Error.globalError) {
@@ -205,6 +206,15 @@ window.addEventListener("load", () => {
         }
       }
       return valid; // return the valid status
+    }
+
+    //if all inputs are empty, show error
+    showEmptyInputError() {
+      _("error-message-empty-inputs").innerHTML =
+        "One or more input values missing!";
+      form.onkeydown = () => {
+        _("error-message-empty-inputs").innerHTML = "";
+      };
     }
   }
 

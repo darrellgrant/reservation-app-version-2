@@ -18,13 +18,13 @@ if (!isset($_SESSION['guest'])) {
         <div class="row align-items-center ">
 
         <div class="col">
-            <div class="heading-style custom-margin text-center">
+            <div class="heading-style custom-margin text-center col-sm-12 col-md-6">
             <h3>Change your reservation</h3>
             <p>Fill in the required information below</p>
           </div>
 
             <!--FORM-->
-            <form class="form-style mb-3 custom-margin" id="reservation-form" action="includes/change.inc.php" method="post">
+            <form class="form-style mb-3 custom-margin col-sm-12 col-md-6" id="reservation-form" action="includes/change.inc.php" method="post">
                 <!--'pre-checks -->
                 <!--pre-'checks' radio buttons with the user selection from reservation form-->
                 <?php
@@ -62,7 +62,7 @@ include_once "pre-checks.php";
                     </div>
                     <div class="mb-3">
                         <label for="formInput_Guests" class="form-label">Number of Guests</label>
-                        <input type="text" class="form-control" id="formInput_Guests" placeholder="Enter Number of Guests"  name="guests" value="<?php echo $guest['guest_number']; ?>">
+                        <input type="text" class="form-control" id="formInput_Guests" placeholder="Number of Guests (Rick's can comfortably seat up to 12 guests)"  name="guests" value="<?php echo $guest['guest_number']; ?>">
                          <div class="error-text" id="error-message-guests"></div>
                     </div>
 
@@ -84,6 +84,9 @@ include_once "pre-checks.php";
                         <label class="form-check-label" for="yes-accomodations">
                                Yes Accomodations Needed
                             </label>
+                    </div>
+                    <div class="mb-3">
+                        If yes, we will contact you to discuss accesibility for you or a guest
                     </div>
                 </div>
                 <!--END TAB THREE-->
@@ -114,6 +117,7 @@ include_once "pre-checks.php";
                     <input type="hidden" name="guest-ID" value="<?php echo $guest['guest_ID']; ?>">
                 </div>
                 <!--END TAB FOUR-->
+                <div class="error-text mb-3" id="error-message-empty-inputs"></div>
                 <button class="btn btn-primary me-3" type="button" id="prev-btn"> Previous</button>
 
                 <button class="btn btn-primary" type="button"  id="next-btn" name='submit'>Next</button>
