@@ -27,7 +27,7 @@ include_once "header.php";
             </div>
             <div class="mb-3">
               <label for="formInput_Phone" class="form-label">Phone Number</label>
-              <input type="text"class="form-control" id="formInput_Phone" placeholder="Phone Number Example: 123-123-1234" name="phNumber" />
+              <input type="text"class="form-control" id="formInput_Phone" placeholder="Ex: (123)-123-1234" name="phNumber" />
               <div class="error-text" id="error-message-phone"></div>
             </div>
             <button class="btn btn-primary" type="button" id="submit-btn" name="submit">

@@ -44,7 +44,7 @@ include_once "pre-checks.php";
                     </div>
                     <div class="mb-3">
                         <label for="formInput_Phone" class="form-label">Phone Number</label>
-                        <input type="text" class="form-control" id="formInput_Phone" placeholder="Phone Number Ex: (123)-123-1234" name="phNumber" value="<?php echo $guest['phone']; ?>">
+                        <input type="text" class="form-control" id="formInput_Phone" placeholder="Ex: (123)-123-1234" name="phNumber" value="<?php echo $guest['phone']; ?>">
                         <div class="error-text" id="error-message-phone"></div>
                     </div>
                     <!--END TAB ONE-->
