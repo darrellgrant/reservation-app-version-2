@@ -3,7 +3,7 @@
 While the **validateForm()** method checks if ANY input is empty,
 checkUserInput() method checks that each individual input is indeed not empty
 while also checking that the user entered the appropriate data (i. e. , the user
-etered a valid phone number format in the phone number input fieldor a valid
+entered a valid phone number format in the phone number input field or a valid
 date format in the date input field) for correctness.
 
 As the original Multi Step Form program only checked whether or not the user
