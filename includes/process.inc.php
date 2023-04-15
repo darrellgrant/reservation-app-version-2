@@ -35,7 +35,6 @@ if (isset($_POST['submit'])) {
         exit();
 
     }
-
 }
 
 function check_input($data)
